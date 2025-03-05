@@ -607,9 +607,16 @@ public class NewJFrame extends javax.swing.JFrame {
         RecIntegral integral = data.get(index);
         // Вызов метода из класса для рассчета интеграла
         Thread calculating = new Thread(() -> {
+            long startTime = System.nanoTime(), endTime, duration;
+            
             double resNum = integral.CalculateResult();
             Object resObj = resNum;
             model.setValueAt(resObj, index, 3);
+            
+            endTime = System.nanoTime();
+            duration = (endTime - startTime)/1000000;
+            System.console().flush();
+            System.console().printf("%s ms\n", duration);
         });
         calculating.start();
     }//GEN-LAST:event_jButton3MouseClicked

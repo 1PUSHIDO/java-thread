@@ -26,8 +26,8 @@ public class NewThread extends Thread {
             n++;
         }
         
-        double normalize = high - (low + n * step);
-        if (normalize > 0)
-            result += (Math.exp(low + n * step) + Math.exp(high)) * normalize / 2;
+//        double normalize = high - (low + n * step);
+//        if (normalize > 0)
+//            result += (Math.exp(low + n * step) + Math.exp(high)) * normalize / 2;
     }
 }

@@ -43,7 +43,7 @@ public class RecIntegral {
         // Цикл - каждой нити передаем координаты кусков, которые они вычисляют "параллельно"
         for (double start = low; start + length < high; start += length) {
             // Передаем нити данные
-            threads.add(new NewThread(low, high, step));
+            threads.add(new NewThread(start, start + length, step));
             // Запускаем
             threads.getLast().start();
         }
@@ -57,6 +57,7 @@ public class RecIntegral {
             }
             // к общему результату прибавляем вычисленный результат нити
             result += thread.result;
+            thread.isAlive();
         }
         
         return result;
